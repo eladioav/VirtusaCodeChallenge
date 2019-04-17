@@ -8,6 +8,24 @@
 
 import UIKit
 
+enum URLS {
+    
+    case highSchool, sat
+    
+    func url() -> String {
+    
+        switch self {
+    
+            case .highSchool:
+                return "https://data.cityofnewyork.us/resource/s3k6-pzi2.json"
+
+            case .sat:
+                return "https://data.cityofnewyork.us/resource/f9bf-2cp4.json"
+            
+        }
+    }
+}
+
 public class API_Caller {
     
     
@@ -107,9 +125,10 @@ public class API_Caller {
     ///
     /// - Parameters:
     ///     - dataParameter: Data to send to the server
+    ///     - customHeaders : Custom header parameters [key:value]
     ///     - completionHandler: Closure that receives the server response (status code : String,data received : Any?, server response : URLResponse)
     /// - Returns: Void
-    func callAPI(dataParameter : [String : Any]?, completionHandler : @escaping CompletionHandler) -> Void {
+    func callAPI(dataParameter : [String : Any]?, customHeaders : [String : String]?, completionHandler : @escaping CompletionHandler) -> Void {
         
         //Data to send to API, parsed
         var dataParsed : AnyObject?
@@ -137,6 +156,15 @@ public class API_Caller {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.value(forHTTPHeaderField: "")
+        
+        //Set custom headers
+        if let customHeaders_ = customHeaders {
+        
+            for (key,value) in customHeaders_ {
+            
+                request.addValue(value, forHTTPHeaderField: key)
+            }
+        }
         
         //Set Authorization Header
         if self.authentication != .None {

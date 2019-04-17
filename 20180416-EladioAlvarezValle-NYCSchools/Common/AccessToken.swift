@@ -63,7 +63,7 @@ class AccessToken {
     /// Get access token from Authorization Server
     private func getAccessToken(handler : @escaping(Bool,String)->() ) {
         
-        apiCaller.callAPI(dataParameter: nil) {
+        apiCaller.callAPI(dataParameter: nil, customHeaders: nil) {
             
             (statusCode, data, response) in
             
