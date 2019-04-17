@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SchoolProtocol {
 
+    //MARK: Controls and vars instantiation
+    
     @IBOutlet weak var tableView: UITableView!
     
     //View model instantiation
@@ -18,6 +20,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return SchoolViewModel(delegate: self)
     }()
     
+    private let refreshControl = UIRefreshControl()
+
     lazy var AIV : ActivityIndicatorView = {
         
         return ActivityIndicatorView(title: "Loading Data", center: CGPoint(x: UIScreen.main.bounds.width/2, y: 172 ))
@@ -30,11 +34,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return alert
     }()
     
+    //MARK: View controller life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            self.tableView.refreshControl = refreshControl
+        } else {
+            self.tableView.addSubview(refreshControl)
+        }
+        
+        // Configure Refresh Control
+        refreshControl.addTarget(self, action: #selector(fetchData), for: .valueChanged)
         
     }
     
@@ -42,22 +58,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         super.viewDidAppear(animated)
         
-        self.view.addSubview(self.AIV.getViewActivityIndicator())
-        self.AIV.startAnimating()
+        //Fetch data
+        self.fetchData()
         
-        viewModel.getData {
-            
-            result in
-            
-            guard result else {
-                
-                self.present(self.alert, animated: true, completion: nil)
-                return
-            }
-            
-            self.AIV.stopAnimating()
-            
-        }
     }
 
     //MARK: Table View delegate methods implementation
@@ -81,11 +84,49 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let school = viewModel.getSchool(index: indexPath.row)
-        cell.textLabel?.text = school.school_name
-        cell.detailTextLabel?.text  = school.borough ?? "Not defined"
-        cell.backgroundColor = indexPath.row%2 == 0 ? UIColor.lightText : UIColor.white
+        self.setCell(index: indexPath.row, cell: cell)
         return cell
+    }
+    
+    /// Set cell style and fill with data
+    /// - Parameters:
+    ///     - index : cell index row
+    ///     - cell : Cell to setup
+    func setCell(index : Int, cell : UITableViewCell) {
+        
+        let school = viewModel.getSchool(index: index)
+        cell.textLabel?.text = school.school_name
+        cell.textLabel?.textColor = index%2 == 0 ? UIColor.white : UIColor.darkGray
+        cell.detailTextLabel?.text  = school.borough ?? "Not defined"
+        cell.backgroundColor = index%2 == 0 ? UIColor.darkGray : UIColor.white
+        
+    }
+    
+    //MARK: Helper methods
+    
+    /// Fetch data
+    @objc func fetchData() {
+        
+        self.view.addSubview(self.AIV.getViewActivityIndicator())
+        self.AIV.startAnimating()
+        
+        viewModel.getData {
+            
+            result in
+            
+                //Stop animating and refreshing
+                self.AIV.stopAnimating()
+                self.refreshControl.endRefreshing()
+            
+                guard result else {
+                
+                    self.present(self.alert, animated: true, completion: nil)
+                    return
+                }
+            
+            
+            
+        }
     }
     
     //MARK: School Protocol implementation
