@@ -17,6 +17,7 @@ class SATViewController : UIViewController {
     @IBOutlet weak var readingLabel: UILabel!
     @IBOutlet weak var writingLabel: UILabel!
     @IBOutlet weak var schoolLabel: UILabel!
+    @IBOutlet weak var mainView: UIView!
     
     //MARK: View controller lyfe cycle
     
@@ -29,5 +30,18 @@ class SATViewController : UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        if let sat_ = sat {
+            
+            self.schoolLabel.text = sat_.school_name
+            self.mathLabel.text = sat_.sat_math_avg_score
+            self.readingLabel.text = sat_.sat_critical_reading_avg_score
+            self.writingLabel.text = sat_.sat_writing_avg_score
+        }
     }
+    
+    @IBAction func closeButton(_ sender: UIButton) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

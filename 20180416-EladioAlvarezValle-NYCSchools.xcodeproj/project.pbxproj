@@ -119,7 +119,7 @@
 			children = (
 				79E2E03E2267AE0300E51056 /* SAT */,
 				79E2E0292266B31300E51056 /* Common */,
-				79E2E0352267764300E51056 /* Main */,
+				79E2E0352267764300E51056 /* MainSchool */,
 				79E2DFF82266AFF100E51056 /* AppDelegate.swift */,
 				79E2DFFC2266AFF100E51056 /* Main.storyboard */,
 				79E2E0022266AFF600E51056 /* Assets.xcassets */,
@@ -161,14 +161,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		79E2E0352267764300E51056 /* Main */ = {
+		79E2E0352267764300E51056 /* MainSchool */ = {
 			isa = PBXGroup;
 			children = (
 				79E2E036226777F900E51056 /* SchoolViewModel.swift */,
 				79E2DFFA2266AFF100E51056 /* ViewController.swift */,
 				79E2E03822677A8C00E51056 /* SchoolProtocols.swift */,
 			);
-			path = Main;
+			path = MainSchool;
 			sourceTree = "<group>";
 		};
 		79E2E03E2267AE0300E51056 /* SAT */ = {

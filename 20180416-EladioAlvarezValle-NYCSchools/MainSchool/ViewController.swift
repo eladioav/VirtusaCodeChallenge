@@ -52,14 +52,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Configure Refresh Control
         refreshControl.addTarget(self, action: #selector(fetchData), for: .valueChanged)
         
+        //Fetch data
+        self.fetchData()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
-        
-        //Fetch data
-        self.fetchData()
         
     }
 
@@ -67,8 +67,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        var sat = self.viewModel.getSAT(dbn: self.viewModel.getSchool(index: indexPath.row).dbn)
+        let sat = self.viewModel.getSAT(dbn: self.viewModel.getSchool(index: indexPath.row).dbn)
         print("SAT : \(sat)")
+        let satVC = self.storyboard?.instantiateViewController(withIdentifier: "SATViewController") as! SATViewController
+        satVC.sat = sat
+        self.present(satVC, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
