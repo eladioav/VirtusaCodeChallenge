@@ -36,16 +36,14 @@ class TestAPICaller: XCTestCase {
         let exp = expectation(description: "Wait for api response")
         var statusResponse : String = ""
         var data_ : AnyObject?
+        var schools : [School]?
         
         let apiCaller = API_Caller(URL: URLS.highSchool.url(), httpMethodType: .GET, authenticationType: .None)
         
         apiCaller.callAPI(dataParameter: nil, customHeaders: ["X-App-Token": "RhI2r08uFStqJgImLGthsuLhu"]) {
             
             status, data, response in
-            
-            print("Status : \(status)")
-            print("Response : \(response)")
-            
+        
             statusResponse = status
             data_ = data
             exp.fulfill()
@@ -57,14 +55,15 @@ class TestAPICaller: XCTestCase {
         
             do {
             
-                let schools = try JSONDecoder().decode([School].self, from: data)
-                print(schools)
+                schools = try JSONDecoder().decode([School].self, from: data)
             } catch {
                 print("Error Data \(error)")
             }
         }
         
         XCTAssertEqual(statusResponse, "200")
+        XCTAssertNotNil(schools)
+        
     }
     
     func testAPISAT() {
@@ -72,20 +71,17 @@ class TestAPICaller: XCTestCase {
         let exp = expectation(description: "Wait for api response")
         var statusResponse : String = ""
         var data_ : AnyObject?
-        
+        var sats : [Sat]?
         
         let apiCaller = API_Caller(URL: URLS.sat.url(), httpMethodType: .GET, authenticationType: .None)
         
         apiCaller.callAPI(dataParameter: nil, customHeaders: ["X-App-Token": "RhI2r08uFStqJgImLGthsuLhu"]) {
             
             status, data, response in
-            
-            print("Status : \(status)")
-            print("Response : \(response)")
-            
-            statusResponse = status
-            data_ = data
-            exp.fulfill()
+        
+                statusResponse = status
+                data_ = data
+                exp.fulfill()
         }
         
         waitForExpectations(timeout: 15, handler: nil)
@@ -94,13 +90,44 @@ class TestAPICaller: XCTestCase {
             
             do {
                 
-                let sats = try JSONDecoder().decode([Sats].self, from: data)
-                print(sats)
+                sats = try JSONDecoder().decode([Sat].self, from: data)
             } catch {
                 print("Error Data \(error)")
             }
         }
+        
         XCTAssertEqual(statusResponse, "200")
+        XCTAssertNotNil(sats)
+       
+    }
+    
+    func testViewModel() {
+        
+        let exp = expectation(description: "Wait for api response")
+        let tc = testClass()
+        
+        var apiResult : Bool = false
+        
+        let viewModel : SchoolViewModel = SchoolViewModel(delegate: tc)
+        viewModel.getData {
+            
+            result in
+            
+                apiResult = result
+                exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 15, handler: nil)
+        XCTAssertEqual(apiResult, true)
+    }
+    
+    class testClass : SchoolProtocol {
+        
+        func refreshData() {
+            
+            print("Refresh data")
+            
+        }
     }
 
 }
