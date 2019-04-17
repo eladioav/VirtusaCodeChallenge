@@ -51,14 +51,14 @@ class SchoolViewModel {
                     
                     apiCaller.callAPI(dataParameter: nil, customHeaders: ["X-App-Token": "RhI2r08uFStqJgImLGthsuLhu"]) {
                         
-                        [unowned self] status, data, response in
+                        [unowned self] status, dataSAT, response in
                         
         
-                        if let data_ = data_ as Data? {
+                        if let satsData = dataSAT as? Data {
                             
                             do {
                                 
-                                let sats = try JSONDecoder().decode([Sat].self, from: data_)
+                                let sats = try JSONDecoder().decode([Sat].self, from: satsData)
                                 
                                 //Update UI
                                 DispatchQueue.main.async {
@@ -69,14 +69,14 @@ class SchoolViewModel {
                                 
                                 
                             } catch {
-                                print("Error School Data \(error)")
+                                print("Error SAT Data \(error)")
                                 handler(false)
                             }
                         }
                     }
                     
                 } catch {
-                    print("Error SAT Data \(error)")
+                    print("Error School Data \(error)")
                     handler(false)
                 }
             }
@@ -116,7 +116,7 @@ class SchoolViewModel {
     func getSAT(dbn : String) -> Sat {
      
         //Filter SAT by dbn, if does not exist send empty sat
-        var sat = self.sats?.filter({ $0.dbn == dbn}).first ?? Sat(dbn: "", school_name: "", num_of_sat_test_takers: nil, sat_critical_reading_avg_score: "Not available", sat_math_avg_score: "Not available", sat_writing_avg_score: "Not available")
+        var sat = self.sats?.filter({ $0.dbn == dbn}).first ?? Sat(dbn: "", school_name: "Not available", num_of_sat_test_takers: "", sat_critical_reading_avg_score: "Not available", sat_math_avg_score: "Not available", sat_writing_avg_score: "Not available")
         return sat
     }
     

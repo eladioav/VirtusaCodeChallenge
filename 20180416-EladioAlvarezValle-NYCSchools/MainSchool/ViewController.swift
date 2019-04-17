@@ -68,9 +68,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let sat = self.viewModel.getSAT(dbn: self.viewModel.getSchool(index: indexPath.row).dbn)
-        print("SAT : \(sat)")
         let satVC = self.storyboard?.instantiateViewController(withIdentifier: "SATViewController") as! SATViewController
         satVC.sat = sat
+        satVC.modalPresentationStyle = .overCurrentContext
         self.present(satVC, animated: true, completion: nil)
     }
     
@@ -101,7 +101,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = school.school_name
         cell.textLabel?.textColor = index%2 == 0 ? UIColor.white : UIColor.darkGray
         cell.detailTextLabel?.text  = school.borough ?? "Not defined"
-        cell.backgroundColor = index%2 == 0 ? UIColor.darkGray : UIColor.white
+        cell.backgroundColor = index%2 == 0 ? UIColor.gray : UIColor.white
         
     }
     

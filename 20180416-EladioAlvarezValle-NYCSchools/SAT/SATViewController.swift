@@ -24,11 +24,7 @@ class SATViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        self.mainView.layer.cornerRadius = 5.0
         
         if let sat_ = sat {
             
@@ -37,6 +33,11 @@ class SATViewController : UIViewController {
             self.readingLabel.text = sat_.sat_critical_reading_avg_score
             self.writingLabel.text = sat_.sat_writing_avg_score
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
     }
     
     @IBAction func closeButton(_ sender: UIButton) {
