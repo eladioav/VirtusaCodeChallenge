@@ -15,6 +15,9 @@
 		79E2E0062266AFF600E51056 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79E2E0042266AFF600E51056 /* LaunchScreen.storyboard */; };
 		79E2E0112266AFF600E51056 /* _0180416_EladioAlvarezValle_NYCSchoolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E2E0102266AFF600E51056 /* _0180416_EladioAlvarezValle_NYCSchoolsTests.swift */; };
 		79E2E01C2266AFF600E51056 /* _0180416_EladioAlvarezValle_NYCSchoolsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E2E01B2266AFF600E51056 /* _0180416_EladioAlvarezValle_NYCSchoolsUITests.swift */; };
+		79E2E02B2266B3B500E51056 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E2E02A2266B3B500E51056 /* APICaller.swift */; };
+		79E2E02D2266B3D700E51056 /* APICallerTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E2E02C2266B3D700E51056 /* APICallerTypes.swift */; };
+		79E2E02F2266B48600E51056 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E2E02E2266B48600E51056 /* AccessToken.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		79E2E0172266AFF600E51056 /* 20180416-EladioAlvarezValle-NYCSchoolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "20180416-EladioAlvarezValle-NYCSchoolsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79E2E01B2266AFF600E51056 /* _0180416_EladioAlvarezValle_NYCSchoolsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _0180416_EladioAlvarezValle_NYCSchoolsUITests.swift; sourceTree = "<group>"; };
 		79E2E01D2266AFF600E51056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79E2E02A2266B3B500E51056 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		79E2E02C2266B3D700E51056 /* APICallerTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallerTypes.swift; sourceTree = "<group>"; };
+		79E2E02E2266B48600E51056 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 		79E2DFF72266AFF100E51056 /* 20180416-EladioAlvarezValle-NYCSchools */ = {
 			isa = PBXGroup;
 			children = (
+				79E2E0292266B31300E51056 /* Common */,
 				79E2DFF82266AFF100E51056 /* AppDelegate.swift */,
 				79E2DFFA2266AFF100E51056 /* ViewController.swift */,
 				79E2DFFC2266AFF100E51056 /* Main.storyboard */,
@@ -126,6 +133,16 @@
 				79E2E01D2266AFF600E51056 /* Info.plist */,
 			);
 			path = "20180416-EladioAlvarezValle-NYCSchoolsUITests";
+			sourceTree = "<group>";
+		};
+		79E2E0292266B31300E51056 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				79E2E02A2266B3B500E51056 /* APICaller.swift */,
+				79E2E02C2266B3D700E51056 /* APICallerTypes.swift */,
+				79E2E02E2266B48600E51056 /* AccessToken.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +279,9 @@
 				79E2E0012266AFF100E51056 /* _0180416_EladioAlvarezValle_NYCSchools.xcdatamodeld in Sources */,
 				79E2DFFB2266AFF100E51056 /* ViewController.swift in Sources */,
 				79E2DFF92266AFF100E51056 /* AppDelegate.swift in Sources */,
+				79E2E02D2266B3D700E51056 /* APICallerTypes.swift in Sources */,
+				79E2E02B2266B3B500E51056 /* APICaller.swift in Sources */,
+				79E2E02F2266B48600E51056 /* AccessToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
