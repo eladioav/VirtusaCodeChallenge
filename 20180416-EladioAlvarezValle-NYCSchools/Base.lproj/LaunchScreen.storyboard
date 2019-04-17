@@ -18,33 +18,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NYC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qP-vx-ZSV">
-                                <rect key="frame" x="122.5" y="258" width="169" height="103"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="86"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8L-hq-sdI">
-                                <rect key="frame" x="133" y="345" width="148" height="52"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="43"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eladio Alvarez Valle. 2019." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eco-m2-spb">
                                 <rect key="frame" x="107.5" y="860" width="199" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoNYS" translatesAutoresizingMaskIntoConstraints="NO" id="BNw-Sl-NgI">
+                                <rect key="frame" x="147" y="393" width="120" height="120"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.050397792599999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="eco-m2-spb" secondAttribute="bottom" constant="15" id="1Lb-fB-Ps0"/>
-                            <constraint firstItem="J8L-hq-sdI" firstAttribute="top" secondItem="7qP-vx-ZSV" secondAttribute="bottom" constant="-16" id="2oT-vb-7EZ"/>
-                            <constraint firstItem="J8L-hq-sdI" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8wy-s3-LSt"/>
+                            <constraint firstItem="BNw-Sl-NgI" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3wv-fi-ZR6"/>
+                            <constraint firstItem="BNw-Sl-NgI" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Bno-jv-KoH"/>
                             <constraint firstItem="eco-m2-spb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="PTV-eB-iJd"/>
-                            <constraint firstItem="7qP-vx-ZSV" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="z5H-fr-bhM"/>
-                            <constraint firstItem="7qP-vx-ZSV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="214" id="zD3-Lu-DDp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -54,4 +43,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logoNYS" width="120" height="120"/>
+    </resources>
 </document>

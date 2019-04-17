@@ -23,6 +23,7 @@
 		79E2E037226777F900E51056 /* SchoolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E2E036226777F900E51056 /* SchoolViewModel.swift */; };
 		79E2E03922677A8C00E51056 /* SchoolProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E2E03822677A8C00E51056 /* SchoolProtocols.swift */; };
 		79E2E03B2267870700E51056 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E2E03A2267870700E51056 /* ActivityIndicator.swift */; };
+		79E2E0402267B36100E51056 /* SATViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E2E03F2267B36100E51056 /* SATViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		79E2E036226777F900E51056 /* SchoolViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolViewModel.swift; sourceTree = "<group>"; };
 		79E2E03822677A8C00E51056 /* SchoolProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolProtocols.swift; sourceTree = "<group>"; };
 		79E2E03A2267870700E51056 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		79E2E03F2267B36100E51056 /* SATViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SATViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +117,11 @@
 		79E2DFF72266AFF100E51056 /* 20180416-EladioAlvarezValle-NYCSchools */ = {
 			isa = PBXGroup;
 			children = (
+				79E2E03E2267AE0300E51056 /* SAT */,
 				79E2E0292266B31300E51056 /* Common */,
 				79E2E0352267764300E51056 /* Main */,
 				79E2DFF82266AFF100E51056 /* AppDelegate.swift */,
+				79E2DFFC2266AFF100E51056 /* Main.storyboard */,
 				79E2E0022266AFF600E51056 /* Assets.xcassets */,
 				79E2E0042266AFF600E51056 /* LaunchScreen.storyboard */,
 				79E2E0072266AFF600E51056 /* Info.plist */,
@@ -160,12 +164,19 @@
 		79E2E0352267764300E51056 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				79E2DFFC2266AFF100E51056 /* Main.storyboard */,
 				79E2E036226777F900E51056 /* SchoolViewModel.swift */,
 				79E2DFFA2266AFF100E51056 /* ViewController.swift */,
 				79E2E03822677A8C00E51056 /* SchoolProtocols.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		79E2E03E2267AE0300E51056 /* SAT */ = {
+			isa = PBXGroup;
+			children = (
+				79E2E03F2267B36100E51056 /* SATViewController.swift */,
+			);
+			path = SAT;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +319,7 @@
 				79E2E03B2267870700E51056 /* ActivityIndicator.swift in Sources */,
 				79E2E02D2266B3D700E51056 /* APICallerTypes.swift in Sources */,
 				79E2E02B2266B3B500E51056 /* APICaller.swift in Sources */,
+				79E2E0402267B36100E51056 /* SATViewController.swift in Sources */,
 				79E2E02F2266B48600E51056 /* AccessToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
