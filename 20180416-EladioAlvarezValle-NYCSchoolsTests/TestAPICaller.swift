@@ -35,6 +35,7 @@ class TestAPICaller: XCTestCase {
         
         let exp = expectation(description: "Wait for api response")
         var statusResponse : String = ""
+        var data_ : AnyObject?
         
         let apiCaller = API_Caller(URL: URLS.highSchool.url(), httpMethodType: .GET, authenticationType: .None)
         
@@ -46,10 +47,23 @@ class TestAPICaller: XCTestCase {
             print("Response : \(response)")
             
             statusResponse = status
+            data_ = data
             exp.fulfill()
         }
         
         waitForExpectations(timeout: 15, handler: nil)
+        
+        if let data = data_ as? Data {
+        
+            do {
+            
+                let schools = try JSONDecoder().decode([School].self, from: data)
+                print(schools)
+            } catch {
+                print("Error Data \(error)")
+            }
+        }
+        
         XCTAssertEqual(statusResponse, "200")
     }
     
@@ -57,10 +71,12 @@ class TestAPICaller: XCTestCase {
         
         let exp = expectation(description: "Wait for api response")
         var statusResponse : String = ""
+        var data_ : AnyObject?
         
-        let apiCaller = API_Caller(URL: URLS.sat.url(), httpMethodType: .POST, authenticationType: .None)
         
-        apiCaller.callAPI(dataParameter: ["$limit" : "500", "$$app_token" : "RhI2r08uFStqJgImLGthsuLhu"], customHeaders: nil) {
+        let apiCaller = API_Caller(URL: URLS.sat.url(), httpMethodType: .GET, authenticationType: .None)
+        
+        apiCaller.callAPI(dataParameter: nil, customHeaders: ["X-App-Token": "RhI2r08uFStqJgImLGthsuLhu"]) {
             
             status, data, response in
             
@@ -68,10 +84,22 @@ class TestAPICaller: XCTestCase {
             print("Response : \(response)")
             
             statusResponse = status
+            data_ = data
             exp.fulfill()
         }
         
         waitForExpectations(timeout: 15, handler: nil)
+        
+        if let data = data_ as? Data {
+            
+            do {
+                
+                let sats = try JSONDecoder().decode([Sats].self, from: data)
+                print(sats)
+            } catch {
+                print("Error Data \(error)")
+            }
+        }
         XCTAssertEqual(statusResponse, "200")
     }
 
